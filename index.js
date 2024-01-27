@@ -5,8 +5,8 @@ let nodes = [];
 let RayCastNodes = [];
 
 // number of rows and columns in node grid
-const rows = 100;
-const columns = 100;
+const rows = 125;
+const columns = 125;
 // node size
 const nodeSize = 0.02;
 // size of hidden nodes in the background
@@ -19,6 +19,9 @@ const largerDistance  =0.1;
 const threshold = 0.5;
 // node scale multiplier
 const scaleAdjust = 1.8;
+// opacity
+const smallerNodeOpacity = 0.75;
+const largerNodeOpacity = 0;
 // Create a map to store precalculated distances
 const distanceMap = new Map();
 // Hidden raycast nodes -> visible nodes mapping
@@ -51,13 +54,13 @@ function init() {
     const nodeMaterial = new THREE.MeshBasicMaterial({
         color: 0xB2B0B1,
         transparent: true,
-        opacity: 0.5,
+        opacity: smallerNodeOpacity,
     });
     const largerNodeGeometry = new THREE.CircleGeometry(largerNodeSize, 8);
     const largerNodeMaterial = new THREE.MeshBasicMaterial({
         color: 0xB2B0B1,
         transparent: true,
-        opacity: 0,
+        opacity: largerNodeOpacity,
     });
     for (let i = 0; i < rows; i++) {
         for (let j = 0; j < columns; j++) {
